@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrapper{
+            height: 100vh;
+            width: 100vw;
+            background-image: linear-gradient(to bottom right, #112D4E,#3F72AF);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .container{
+            height: 570px;
+            width: 650px;
+            /* border: 1px solid black; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 70px;
+            gap: 45px;
+        }
+
+        .switchtab{
+            width: 550px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .switchtab p{
+            font-size: 20px;
+            /* height: 25px; */
+            padding: 4px;
+            /* width: 140px; */
+            background-color: gray;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .searchbar{
+            width: 550px;
+            display: none;
+            gap: 10px;
+
+        }
+    
+
+        #searchbox{
+            width: 500px;
+            height: 40px;
+            padding-left: 20px;
+            font-size: 18px;
+            border-radius: 10px;
+            background-color:#a1cfea;
+            border: none;
+
+        }
+
+        #searchbox::placeholder{
+            color: white;
+        }
+
+        #searchbox:focus{
+            /* outline: none; */
+            outline-color: white;
+        }
+
+
+        .search-btn{
+            height: 40px;
+            width: 40px;
+            background-color:#3F72AF;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .info-results{
+            width: 650px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location{
+            font-size: 40px;
+            gap: 5px;
+        }
+
+        .description{
+            font-size: 28px;
+        }
+        .curr-temp{
+            font-size: 55px;
+            font-weight: bolder;
+            margin-top: -12px;
+        }
+
+        .last-div{
+            width: 650px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .windspeed, .humidity, .clouds{
+            height: 130px;
+            width: 205px;
+            background-color:rgb(131, 149, 155);
+            border-radius: 7px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .last-div p{
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        .humidity img{
+            margin-bottom: 12px;
+        }
+
+        .active{
+            display: flex;
+        }
+
+        .loading{
+            display:none;
+            /* background-color: red; */
+        }
+
+        .alagactive{
+            display: block;
+            /* background-color: yellow; */
+        }
+
+        .not-found{
+            text-align: center;
+            font-size: 20px;
+            font-weight: bolder;
+            display:none;
+        }
+
+        .hide{
+            display: block;
+            /* background-color: yellow; */
+        }
+
+        .permission{
+            display: none;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            gap: 16px;
+        }
+
+        .permission h2{
+            font-size: 30px;
+        }
+
+        .access-btn{
+            height: 40px;
+            width: 160px;
+            background-color:#3F72AF;
+            font-size: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .permissionactive{
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <h1>WEATHER APP</h1>
+        <div class="container">
+
+            <div class="switchtab">
+                <p class="yourweather">Your Weather</p>
+                <p class="searchweather">Search Weather</p>
+            </div>
+
+            <div class="searchbar">
+                    <input type="text" id="searchbox" placeholder="Search for City...">
+                    <label for="searchbox"><div class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></div></label>
+            </div>
+
+            <img class="loading" height="120px" width="120px" src="weatherappAssets/loading.gif" alt="">
+
+            <div class="not-found">
+                <img height="200px" width="200px" src="weatherappAssets/not-found.png" alt="">
+                <p>City not found</p>
+            </div>
+
+            <div class="permission">
+                <img height="80px" width="80px" src="weatherappAssets/location.png" alt="">
+                <h2>Grant Location Access</h2>
+                <p>Allow Access to get your weather Information</p>
+                <div class="access-btn">Grant Access</div>
+            </div>
+
+            <div class="info-results">
+
+                    <div class="location">
+                        <img class="flag" height="50px" width="50px" src="https://countryflagsapi.netlify.app/flag/IN.svg">
+                    </div>
+
+                    <p class="description">haze</p>
+
+                    <img class="weatherimage" height="80px" width="80px" src="" alt="">
+
+                    <p class="curr-temp"></p>
+
+                    <div class="last-div">
+
+                        <div class="windspeed">
+                            <img height="50px" width="50px" src="weatherappAssets/wind.png" alt="">
+                            <p>WINDSPEED</p>
+                            <p class="wind-data">4.12m/s</p>
+                        </div>
+
+                        <div class="humidity">
+                            <img height="36px" width="36px" src="weatherappAssets/humidity.png" alt="">
+                            <p>HUMIDITY</p>
+                            <p class="humidity-data">41%</p>
+                        </div>
+
+                        <div class="clouds">
+                            <img height="50px" width="50px" src="weatherappAssets/cloud.png" alt="">
+                            <p>CLOUDS</p>
+                            <p class="clouds-data">0%</p>
+                        </div>
+                    </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    
+
+
+    <script src="weatherapp.js"></script>
+    <script src="https://kit.fontawesome.com/58a810656e.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

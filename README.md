@@ -12,7 +12,7 @@ A simple weather application that allows users to view real-time weather data fo
 
 ## Technologies Used
 
-- **HTML5 & CSS3**: For structuring and styling the application.
+- **HTML & CSS**: For structuring and styling the application.
 - **JavaScript**: To handle API requests and manage user interactions.
 - **Weather API**: Used to fetch real-time weather data (e.g., OpenWeatherMap API).
 - **Geolocation API**: Used to detect the user's current location.
